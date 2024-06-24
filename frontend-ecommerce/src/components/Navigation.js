@@ -12,7 +12,8 @@ function Navigation() {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <LinkContainer to="/">
-        <Navbar.Brand >Tech Hub</Navbar.Brand></LinkContainer>
+        <Navbar.Brand >Tech Hub</Navbar.Brand>
+        </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

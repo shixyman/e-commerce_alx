@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const http =require('http');
+require('./connection')
 const server =http.createServer(app);
 const {Server} = require('socket.io');
 const cors = require('cors')
