@@ -24,7 +24,7 @@ function Login() {
                     <Form.Group>
                         <Button type="submit">Login</Button>
                     </Form.Group>
-                    <p>
+                    <p className="pt-3 text-center">
                         Dont't have an accound ?<Link to="/signup">Create account</Link>{" "}
                     </p>
                     </Form>   
@@ -35,4 +35,4 @@ function Login() {
   )
 }
 
-export default Login
+export default Login;
