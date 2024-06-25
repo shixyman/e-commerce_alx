@@ -4,13 +4,15 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import categories from "../categories";
 import './Home.css';
+import banner from "./banner.png"
 
 
 
 function Home() {
     return (
         <div>
-            <img src=" https://res.cloudinary.com/learn-code-10/image/upload/v1653947013/yqajnhqf7usk56zkwqi5.png" className="home-banner" />
+            {/* <img src=" https://res.cloudinary.com/learn-code-10/image/upload/v1653947013/yqajnhqf7usk56zkwqi5.png" className="home-banner" /> */}
+            <img src="{banner}" className="home-banner" />
             <div className="featured-products-container container mt-4">
                 <h2>Last products</h2>
                 {/* last products here */}
