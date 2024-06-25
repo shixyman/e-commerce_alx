@@ -3,7 +3,7 @@ import productSlice from "./features/productSlice";
 import userSlice from "./features/userSlice";
 import appApi from "./services/appApi";
 
-//persit our store
+//persist our store
 import storage from "redux-persist/lib/storage";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
@@ -27,9 +27,14 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 
 // creating the store
 
+// const store = configureStore({
+//     reducer: persistedReducer,
+//     middleware: [thunk, appApi.middleware],
+// });
 const store = configureStore({
     reducer: persistedReducer,
-    middleware: [thunk, appApi.middleware],
-});
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(thunk, appApi.middleware),
+  });
 
 export default store;
