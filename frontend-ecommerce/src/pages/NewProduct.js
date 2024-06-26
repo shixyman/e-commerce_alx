@@ -1,5 +1,9 @@
-import React from 'react';
-import './NewProduct.css';
+import React, { useState } from "react";
+import { Alert, Col, Container, Form, Row, Button } from "react-bootstrap";
+import { useNavigate,Link } from "react-router-dom";
+import { useCreateProductMutation } from "../services/appApi";
+import "./NewProduct.css";
+import axios from "../axios";
 
 function NewProduct() {
     const [name, setName] = useState("");
@@ -10,11 +14,50 @@ function NewProduct() {
     const [imgToRemove, setImgToRemove] = useState(null);
     const navigate = useNavigate();
     const [createProduct, { isError, error, isLoading, isSuccess }] = useCreateProductMutation();
+
+    function showWidget() {
+        const widget = window.cloudinary.createUploadWidget(
+            {
+                cloudName: "dtkxm3sxf",
+                uploadPreset: "hjg2uwov",
+            },
+            (error, result) => {
+                if (!error && result.event === "success") {
+                    setImages((prev) => [...prev, { url: result.info.url, public_id: result.info.public_id }]);
+                }
+            }
+        );
+        widget.open();
+    }
+    function handleRemoveImg(imgObj) {
+        setImgToRemove(imgObj.public_id);
+        axios
+            .delete(`/images/${imgObj.public_id}/`)
+            .then((res) => {
+                setImgToRemove(null);
+                setImages((prev) => prev.filter((img) => img.public_id !== imgObj.public_id));
+            })
+            .catch((e) => console.log(e));
+    }
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (!name || !description || !price || !category || !images.length) {
+            return alert("Please fill out all the fields");
+        }
+        createProduct({ name, description, price, category, images }).then(({ data }) => {
+            if (data.length > 0) {
+                setTimeout(() => {
+                    navigate("/");
+                }, 1500);
+            }
+        });
+    }
+
   return (
   <Container>
             <Row>
                 <Col md={6} className="new-product__form--container">
-                    <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
+                    <Form style={{ width: "100%" }} >
                         <h1 className="mt-4">Create a product</h1>
                         {isSuccess && <Alert variant="success">Product created with succcess</Alert>}
                         {isError && <Alert variant="danger">{error.data}</Alert>}
@@ -55,6 +98,7 @@ function NewProduct() {
                                 {images.map((image) => (
                                     <div className="image-preview">
                                         <img src={image.url} />
+                                        {/* add  icon for removing*/}
                                         {imgToRemove != image.public_id && <i className="fa fa-times-circle" onClick={() => handleRemoveImg(image)}></i>}
                                     </div>
                                 ))}
