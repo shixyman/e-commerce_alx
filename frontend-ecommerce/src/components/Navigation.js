@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import {Navbar, Button} from 'react-bootstrap';
@@ -23,51 +23,48 @@ function Navigation() {
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-             {/* if no user */}
-             {!user && (
+        <Nav className="ms-auto">
+                        {/* if no user */}
+                        {!user && (
                             <LinkContainer to="/login">
                                 <Nav.Link>Login</Nav.Link>
                             </LinkContainer>
                         )}
-
-            <Nav.Link href="#link">Link</Nav.Link>
               {/* if user */}
               {user && (
                 <>
-                <LinkContainer to="/dashboard">
-                <NavDropdown.Item>Dashboard</NavDropdown.Item>
-            </LinkContainer>
-            <LinkContainer to="/new-product">
-                <NavDropdown.Item>Create product</NavDropdown.Item>
-            </LinkContainer></>
+                <NavDropdown title={`${user.email}`} id="basic-nav-dropdown">
+                                    {user.isAdmin && (
+                                        <>
+                                            <LinkContainer to="/admin">
+                                                <NavDropdown.Item>Dashboard</NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/new-product">
+                                                <NavDropdown.Item>Create Product</NavDropdown.Item>
+                                            </LinkContainer>
+                                        </>
               )}
+               
                {!user.isAdmin && (
-                    <>
-                    <LinkContainer to="/cart">
-                    <NavDropdown.Item>Cart</NavDropdown.Item>
-                     </LinkContainer>
-                      <LinkContainer to="/orders">
-                                           <NavDropdown.Item>My orders</NavDropdown.Item>
-                                        </LinkContainer>
+                                        <>
+                                            <LinkContainer to="/cart">
+                                                <NavDropdown.Item>Cart</NavDropdown.Item>
+                                            </LinkContainer>
+                                            <LinkContainer to="/orders">
+                                                <NavDropdown.Item>My orders</NavDropdown.Item>
+                                            </LinkContainer>
                                         </>
                                     )}
-            <NavDropdown title={`${user.email}`} id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <Button variant="danger" onClick={handleLogout} className="logout-btn">
+
+                                    <NavDropdown.Divider />
+                                    <Button variant="danger" onClick={handleLogout} className="logout-btn">
                                         Logout
                                     </Button>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
+                                </NavDropdown>
+                            </>
+                        )}
+                    </Nav>
+                </Navbar.Collapse>
       </Container>
     </Navbar>
   );

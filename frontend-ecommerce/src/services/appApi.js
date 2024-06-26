@@ -21,13 +21,39 @@ export const appApi = createApi({
                 body: user,
             }),
         }),
-       
+       // creating product
+       createProduct: builder.mutation({
+        query: (product) => ({
+            url: "/products",
+            body: product,
+            method: "POST",
+        }),
+    }),
+
+    deleteProduct: builder.mutation({
+        query: ({ product_id, user_id }) => ({
+            url: `/products/${product_id}`,
+            body: {
+                user_id,
+            },
+            method: "DELETE",
+        }),
+    }),
+
+    updateProduct: builder.mutation({
+        query: (product) => ({
+            url: `/products/${product.id}`,
+            body: product,
+            method: "PATCH",
+        }),
+    }),
     }),
 });
 
 export const {
     useSignupMutation,
     useLoginMutation,
+    useCreateProductMutation,
     
 } = appApi;
 
