@@ -57,7 +57,7 @@ function NewProduct() {
   <Container>
             <Row>
                 <Col md={6} className="new-product__form--container">
-                    <Form style={{ width: "100%" }} >
+                <Form style={{ width: "100%" }} onSubmit={handleSubmit}>
                         <h1 className="mt-4">Create a product</h1>
                         {isSuccess && <Alert variant="success">Product created with succcess</Alert>}
                         {isError && <Alert variant="danger">{error.data}</Alert>}
