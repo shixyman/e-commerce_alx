@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 import "./CartPage.css";
 import { useIncreaseCartProductMutation, useDecreaseCartProductMutation, useRemoveFromCartMutation } from "../services/appApi";
 import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "../components/CheckoutForm";
+
 
 const stripePromise = loadStripe("pk_test_51PWKxeAIeJwIycjsMgnxBWMBXMw5xmuJJiyRiUDuqZfRNjbxfixVxKSvTGlCvdpG6qbMM3RQCjFN53c5mmtne6TJ00mjw73GFd");
 

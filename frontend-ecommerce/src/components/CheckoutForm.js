@@ -11,6 +11,10 @@ function CheckoutForm() {
     const user = useSelector((state) => state.user);
     const navigate = useNavigate();
     const [alertMessage, setAlertMessage] = useState("");
+    const [createOrder, { isLoading, isError, isSuccess }] = useCreateOrderMutation();
+    const [country, setCountry] = useState("");
+    const [address, setAddress] = useState("");
+    const [paying, setPaying] = useState(false);
    
     async function handlePay(e) {
         e.preventDefault();
@@ -42,7 +46,6 @@ function CheckoutForm() {
             });
         }
     }
-
     return (
         <Col className="cart-payment-container">
             <Form onSubmit={handlePay}>
