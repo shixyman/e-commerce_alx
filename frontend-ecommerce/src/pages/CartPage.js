@@ -3,9 +3,9 @@ import { Alert, Col, Container, Row, Table } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import "./CartPage.css";
 import { useIncreaseCartProductMutation, useDecreaseCartProductMutation, useRemoveFromCartMutation } from "../services/appApi";
+import { loadStripe } from "@stripe/stripe-js";
 
-
-
+const stripePromise = loadStripe("pk_test_51PWKxeAIeJwIycjsMgnxBWMBXMw5xmuJJiyRiUDuqZfRNjbxfixVxKSvTGlCvdpG6qbMM3RQCjFN53c5mmtne6TJ00mjw73GFd");
 
 function CartPage() {
     const user = useSelector((state) => state.user);
@@ -29,7 +29,9 @@ function CartPage() {
                     {cart.length == 0 ? (
                         <Alert variant="info">Shopping cart is empty. Add products to your cart</Alert>
                     ) : (
-                        <div>payment here</div>
+                        <Elements stripe={stripePromise}>
+                            <CheckoutForm />
+                        </Elements>
                     )}
                 </Col>
                 {cart.length > 0 && (
