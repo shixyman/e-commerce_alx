@@ -29,6 +29,7 @@ router.post('/', async(req, res)=> {
 
 
 // getting all orders;
+
 router.get('/', async(req, res)=> {
   try {
     const orders = await Order.find().populate('owner', ['email', 'name']);
@@ -42,7 +43,6 @@ router.get('/', async(req, res)=> {
 //shipping order
 
 router.patch('/:id/mark-shipped', async(req, res)=> {
- 
   const {ownerId} = req.body;
   const {id} = req.params;
   try {

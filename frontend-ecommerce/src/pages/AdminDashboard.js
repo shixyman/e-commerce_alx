@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Nav, Tab, Col, Row } from "react-bootstrap";
 import DashboardProducts from "../components/DashboardProducts";
-
+import OrdersAdminPage from "../components/OrdersAdminPage";
 
 
 function AdminDashboard() {
@@ -27,7 +27,9 @@ function AdminDashboard() {
                             <Tab.Pane eventKey="products">
                                 <DashboardProducts />
                             </Tab.Pane>
-                            
+                            <Tab.Pane eventKey="orders">
+                                <OrdersAdminPage />
+                            </Tab.Pane>
                         </Tab.Content>
                     </Col>
                 </Row>
