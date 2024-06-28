@@ -29,7 +29,7 @@ export const appApi = createApi({
             method: "POST",
         }),
     }),
-
+// deleting product
     deleteProduct: builder.mutation({
         query: ({ product_id, user_id }) => ({
             url: `/products/${product_id}`,
@@ -39,7 +39,7 @@ export const appApi = createApi({
             method: "DELETE",
         }),
     }),
-
+// updating product
     updateProduct: builder.mutation({
         query: (product) => ({
             url: `/products/${product.id}`,

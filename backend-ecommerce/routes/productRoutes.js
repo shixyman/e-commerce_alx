@@ -3,6 +3,7 @@ const Product = require('../models/Product');
 const User = require('../models/User');
 
 //get products;
+
 router.get('/', async(req, res)=> {
   try {
     const sort = {'_id': -1}
@@ -15,6 +16,7 @@ router.get('/', async(req, res)=> {
 
 
 //create product
+
 router.post('/', async(req, res)=> {
   try {
     const {name, description, price, category, images: pictures} = req.body;
@@ -25,7 +27,6 @@ router.post('/', async(req, res)=> {
     res.status(400).send(e.message);
   }
 })
-
 
 // update product
 
