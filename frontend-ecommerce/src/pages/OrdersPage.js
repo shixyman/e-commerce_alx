@@ -7,11 +7,8 @@ import "./OrdersPage.css";
 
 function OrdersPage() {
     const user = useSelector((state) => state.user);
-    const product = useSelector((state) => state.product);
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [orderToShow, setOrderToShow] = useState([]);
-    const [show, setShow] = useState(false);
 
     useEffect(() => {
         setLoading(true);
@@ -52,7 +49,7 @@ function OrdersPage() {
                         <tr>
                             <td>{order._id}</td>
                             <td>
-                                <Badge bg={`${order.status == "processing" ? "warning" : "success"}`} text="white">
+                                <Badge bg={`${order.status === "processing" ? "warning" : "success"}`} text="white">
                                     {order.status}
                                 </Badge>
                             </td>

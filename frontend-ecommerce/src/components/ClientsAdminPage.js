@@ -24,7 +24,7 @@ function ClientsAdminPage() {
     }, []);
 
     if (loading) return <Loading />;
-    if (users?.length == 0) return <h2 className="py-2 text-center">No users yet</h2>;
+    if (users?.length === 0) return <h2 className="py-2 text-center">No users yet</h2>;
 
     return (
         <Table responsive striped bordered hover>
@@ -47,7 +47,7 @@ function ClientsAdminPage() {
         </Table>
     );
 
-    return <div>ClientsAdminPage</div>;
+    // return <div>ClientsAdminPage</div>;
 }
 
 export default ClientsAdminPage;

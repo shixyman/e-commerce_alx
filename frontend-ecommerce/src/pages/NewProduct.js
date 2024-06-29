@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Col, Container, Form, Row, Button } from "react-bootstrap";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useCreateProductMutation } from "../services/appApi";
 import "./NewProduct.css";
 import axios from "../axios";
@@ -97,9 +97,9 @@ function NewProduct() {
                             <div className="images-preview-container">
                                 {images.map((image) => (
                                     <div className="image-preview">
-                                        <img src={image.url} />
+                                        <img src={image.url} alt="" />
                                         {/* add  icon for removing*/}
-                                        {imgToRemove != image.public_id && <i className="fa fa-times-circle" onClick={() => handleRemoveImg(image)}></i>}
+                                        {imgToRemove !== image.public_id && <i className="fa fa-times-circle" onClick={() => handleRemoveImg(image)}></i>}
                                     </div>
                                 ))}
                             </div>

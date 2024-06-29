@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDeleteProductMutation } from "../services/appApi";
 import "./DashboardProducts.css";
-
+import Pagination from "./Pagination";
 
 function DashboardProducts() {
     const products = useSelector((state) => state.products);
@@ -16,7 +16,27 @@ function DashboardProducts() {
         if (window.confirm("Are you sure?")) deletProduct({ product_id: id, user_id: user._id });
     }
 
-    
+    function TableRow({ pictures, _id, name, price }) {
+        return (
+            <tr>
+                <td>
+                    <img src={pictures[0].url} className="dashboard-product-preview" alt=""/>
+                </td>
+                <td>{_id}</td>
+                <td>{name}</td>
+                <td>{price}</td>
+                <td>
+                    <Button onClick={() => handleDeleteProduct(_id, user._id)} disabled={isLoading}>
+                        Delete
+                    </Button>
+                    <Link to={`/product/${_id}/edit`} className="btn btn-warning">
+                        Edit
+                    </Link>
+                </td>
+            </tr>
+        );
+    }
+
     return (
         <Table striped bordered hover responsive>
             <thead>
@@ -28,22 +48,7 @@ function DashboardProducts() {
                 </tr>
             </thead>
             <tbody>
-                {products.map((product) =>(
-                    <tr>
-                    <td>
-                        <img src={product.pictures[0].url} className="dashboard-product-preview"/>
-                    </td>
-                    <td>{product._id}</td>
-                    <td>{product.name}</td>
-                    <td>{product.price}</td>
-                    <Button onClick={() => handleDeleteProduct(product._id, user._id)} disabled={isLoading} variant="danger">
-                        Delete
-                    </Button>
-                    <Link to={`/product/${product._id}/edit`} className="btn btn-warning">
-                        Edit
-                    </Link>
-                </tr>
-                ))}
+                <Pagination data={products} RenderComponent={TableRow} pageLimit={1} dataLimit={5} tablePagination={true} />
             </tbody>
         </Table>
     );

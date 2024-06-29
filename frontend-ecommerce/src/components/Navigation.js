@@ -17,7 +17,7 @@ function Navigation() {
         dispatch(logout());
     }
     const unreadNotifications = user?.notifications?.reduce((acc, current) => {
-        if (current.status == "unread") return acc + 1;
+        if (current.status === "unread") return acc + 1;
         return acc;
     }, 0);
 
@@ -33,7 +33,7 @@ function Navigation() {
         <Navbar bg="light" expand="lg">
             <Container>
                 <LinkContainer to="/">
-                    <Navbar.Brand>Ecomern</Navbar.Brand>
+                    <Navbar.Brand>TechHub shop</Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
