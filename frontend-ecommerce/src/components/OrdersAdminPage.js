@@ -78,10 +78,10 @@ function OrdersAdminPage() {
                     <td>{order.count}</td>
                     <td>{order.total}</td>
                     <td>{order.address}</td>
-                    <td>{order.statue === "processing"? (<Button size="sm" onClick={() => markShipped(order._id, order.owner?._id)}>
+                    <td>{order.statue === "processing" ? ( <Button size="sm" onClick={() => markShipped(order._id, order.owner?._id)}>
                             Mark as shipped
                         </Button>
-                    ) : (
+                    ):( 
                         <Badge bg="success">Shipped</Badge>
                     )}</td>
                     <td>
