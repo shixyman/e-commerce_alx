@@ -96,7 +96,7 @@ techhub/
 │   ├── models/
 │   ├── routes/
 │   ├── package.json
-│   ├── server.jsson
+│   ├── server.js
 ├── README.md
 ```
 #### Challenges
