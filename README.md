@@ -49,18 +49,18 @@ To set up the project locally, follow these steps:
 2. Navigate to the project directory:
 
 ```bash
-cd techhub.git ```
+cd e-commerce_alx.git ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd techhub
+cd e-commerce_alx
 ```
 3. Install dependencies for both client and server:
 ```bash
-cd client
+cd frontend
 npm install
-cd ../server
+cd ../backend
 npm install
 ```
 4. Create a .env file in the server directory with the following variables:
@@ -82,12 +82,12 @@ cd ../client
 npm start
 ```
 #### Usage
-Once set up, access the application at http://localhost:3000 for the client and http://localhost:5000 for the server. Explore the products, add items to your cart, and proceed to checkout to experience secure payments.
+Once set up, access the application at http://localhost:3001 for the client and http://localhost:8080 for the server. Explore the products, add items to your cart, and proceed to checkout to experience secure payments.
 
 #### Project Structure
 ```csharp
 
-techhub/
+e-commerce_alx/
 ├── frontend-ecommerce/                # React client code
 │   ├── public/
 │   ├── src/
